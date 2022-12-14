@@ -1,5 +1,17 @@
 <div id="<%= dom_id rating %>">
+  <h2>
+    <strong>Beer:</strong>
+    <%= link_to rating.beer.name, rating.beer %>
+  </h2>
+
   <p>
-    <%= rating.beer.name %> <%= rating.score %>
-  </p>  
+    <strong>Score:</strong>
+    <%= score %>
+  </p>
+
+  <p>
+    <strong>Brewery:</strong>
+    <%= link_to rating.beer.brewery.name, rating.beer.brewery %>
+  </p>
+
 </div>
