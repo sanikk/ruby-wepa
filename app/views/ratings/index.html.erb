@@ -3,16 +3,6 @@
 <h2>List of ratings</h2>
 
 <p>Number of ratings: <%= @ratings.count %></p>
-<<<<<<< HEAD
-
-<div id="ratings">
-    <ul>
-        <% @ratings.each do |rating| %>
-            <li> <%= render rating %> </li>
-        <% end %>
-    </ul>
-</div>
-=======
 <div id="ratings">
     <ul>
         <% @ratings.each do |rating| %>
@@ -24,4 +14,3 @@
 <%= link_to "New rating", new_rating_path %>
 <%= link_to "Beer list", beers_path %>
 <%= link_to "Brewery list", breweries_path %>
->>>>>>> 9f8a00d82d94f5761e00dfc3d95c3a33cd55141d
