@@ -9,4 +9,9 @@ class Beer < ApplicationRecord
         end
         return 0
     end
+
+    def to_s
+        #return self.name + " by " + self.brewery
+        return "#{self.name} by #{self.brewery.name}"
+    end
 end
