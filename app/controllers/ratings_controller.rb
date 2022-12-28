@@ -16,7 +16,12 @@ class RatingsController < ApplicationController
     # Rating.create params[:rating]
 
     # Seuraava toimii koska siinä eksplisiittisesti määritellään mitkä kentät voi massasijoittaa
-    Rating.create params[:rating].permit(:score, :beer_id)
+    # lisätty myös luotavan ratingin tallennus tähän
+    rating = Rating.create params[:rating].permit(:score, :beer_id)
+
+    # tallennetaan luoto rating sessioon
+    session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
+
     redirect_to ratings_path
   end
 
