@@ -1,7 +1,7 @@
 class Rating < ApplicationRecord
-    belongs_to :beer
+  belongs_to :beer
 
-    def to_s
-        return "#{self.beer.name} score: #{self.score}"
-    end
+  def to_s
+    "#{beer.name} score: #{score}"
+  end
 end
