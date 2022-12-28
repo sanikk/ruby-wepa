@@ -1,6 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @user %>
+<p><strong>Username:</strong></p>
+<p><%= @user.username %></p>
+<% if @user.ratings.empty? %>
+  <p>Has rated no beers</p>
+<% else %>
+  <p>Has made <%= pluralize(@user.ratings.count, "rating") %>, average rating <%= @user.average_rating %>.</p>
+<% end %>
+<p><strong>Ratings</strong></p>
+<div id="ratings">
+  <ul>
+    <% @user.ratings.each do |rating| %> 
+      <li><%= rating.beer.name %>, <%= rating.score %> points <%= link_to 'Delete', rating_path(rating), data: { "turbo-method": :delete,  turbo_confirm: 'Are you sure?'}, class: "link-secondary smooth" %></li>
+    <% end %>
+  </ul>
+</div>
+
+
+
 
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
