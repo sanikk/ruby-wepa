@@ -17,13 +17,14 @@ class RatingsController < ApplicationController
 
     # Seuraava toimii koska siinä eksplisiittisesti määritellään mitkä kentät voi massasijoittaa
     # lisätty myös luotavan ratingin tallennus tähän
-    rating = Rating.new params[:rating].permit(:score, :beer_id)
-    rating.user = current_user
-    rating.save
-    # tallennetaan luotu rating sessioon
-    # session[:last_rating] = "#{rating.beer.name} #{rating.score} points"
-
-    redirect_to ratings_path
+    @rating = Rating.new params[:rating].permit(:score, :beer_id)
+    @rating.user = current_user
+    if @rating.save
+      redirect_to user_path current_user
+    else
+      @beers = Beer.all
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
